@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edu4ce - AI Powered Learning</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      /* ← This enables smooth scrolling */
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: rgb(180, 248, 248);
+    }
+
+    /* Navigation */
+    nav {
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #1d4ed8;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 8rem 2rem 7rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.95;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: white;
+      color: #1d4ed8;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.25s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Features Section */
+    .features {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 4rem;
+      color: #1f2937;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+      text-align: center;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      color: #1d4ed8;
+    }
+
+    .feature-box p {
+      color: #4b5563;
+    }
+
+    /* Contact Section */
+    .cf {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .cf h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #1f2937;
+    }
+
+    .cf form label {
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .cf form input,
+    .cf form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .cf form input[type="submit"] {
+      background-color: #1d4ed8;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.25s;
+      margin-top: 1rem;
+    }
+
+    .cf form input[type="submit"]:hover {
+      background-color: #2563eb;
+    }
+
+    .cf form textarea {
+      resize: vertical;
+    }
+
+    .cf form input:focus,
+    .cf form textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .nav-container {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 5rem;
+      }
+
+      .features {
+        padding: 4rem 1.5rem;
+      }
+
+      .cf {
+        margin: 0 1.5rem 4rem;
+      }
+    }
+
+    /* Footer Section */
+    .footer {
+      background-color: #1e293b;
+      /* Dark navy color */
+      color: #ffffff;
+      padding: 2rem 10%;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    /* Mobile adjustment for footer */
+    @media (max-width: 600px) {
+      .footer-content {
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Edu4ce.</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Home Section -->
+  <section class="hero" id="home">
+    <h1>An AI powered learning platform</h1>
+    <p>Edu4ce helps students learn smarter with personalized AI-powered lessons.</p>
+    <a href="#contact" class="btn">Get Started</a>
+  </section>
+
+  <!-- About / Features Section -->
+  <section class="features" id="about">
+    <h2>Why Choose Us?</h2>
+    <div class="feature-grid">
+      <div class="feature-box">
+        <h3>🎥 Multimedia Learning</h3>
+        <p>Engage students with interactive videos, animations, and audio content tailored to different learning styles.
+        </p>
+      </div>
+
+      <div class="feature-box">
+        <h3>📚 Structured Courses</h3>
+        <p>Well-organized curriculum with clear learning paths and progress tracking for students.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🤖 AI Assistance</h3>
+        <p>Personalized learning experiences powered by AI that adapts to each student's pace and learning style.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🎓 Expert Instructors</h3>
+        <p>Learn from industry experts and experienced educators who are passionate about teaching.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>📈 Progress Tracking</h3>
+        <p>Monitor student progress and performance with detailed analytics and insights.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>🔐 Secure Authentication</h3>
+        <p>Ensure secure and private access to all learning materials with robust authentication mechanisms.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="cf" id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </section>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2026 Your Brand Name. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
